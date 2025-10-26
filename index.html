@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: #00ffff;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    a:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 8px #ff00ff, 0 0 12px #00ffff;
+    }
+
+    header {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #0ff inset;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ff0, 0 0 35px #0ff inset;
+    }
+
+    nav {
+      background-color: #111;
+      border-bottom: 1px solid #222;
+    }
+
+    nav a {
+      padding: 10px 20px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff0;
+      text-shadow: 0 0 5px #ff0, 0 0 10px #0ff;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .card-neon {
+      background: rgba(20, 20, 20, 0.85);
+      border-left: 3px solid #0ff;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #0ff;
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-neon:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #ff0, 0 0 50px #0ff;
+    }
+
+    h2 {
+      color: #0ff;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background-color: #111;
+      color: #0ff;
+      border-top: 1px solid #222;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    /* Neon glow for About Me header */
+.neon-text {
+  color: #0ff;
+  font-weight: bold;
+  text-shadow: 
+    0 0 5px #0ff,
+    0 0 10px #0ff,
+    0 0 20px #0ff,
+    0 0 40px #0ff;
+  animation: flicker 2s infinite;
+}
+
+/* Flicker animation for neon effect */
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+  }
+  20%, 22%, 24%, 55% {
+    text-shadow: 0 0 2px #0ff, 0 0 4px #0ff, 0 0 6px #0ff, 0 0 10px #0ff;
+  }
+}
+
+/* Pulsing glow background for About Me section */
+.about-neon {
+  background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(0,0,0,0.9));
+  border-left: 5px solid #0ff;
+  padding: 50px;
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about-neon:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+}
+
+/* Optional: Typing cursor color */
+.typing-effect::after {
+  content: '|';
+  color: #0ff;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+#backToTop {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 10px;
+  right: 40px;
+  z-index: 99;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  background-color: #0ff;
+  color: #000;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  transition: all 0.3s ease;
+}
+
+#backToTop:hover {
+  background-color: #00cccc;
+  transform: scale(1.2);
+  box-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+}
+
+.card-neon {
+  background-color: #111; /* dark background */
+  color: #0ff; /* neon text */
+  padding: 20px;
+  border: 2px solid #0ff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  transition: all 0.3s ease;
+}
+
+.card-neon h2 {
+  text-align: center;
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+}
+
+.card-neon ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.card-neon li {
+  margin-bottom: 10px;
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+
+.card-neon li:hover {
+  transform: scale(1.01);
+  text-shadow: 0 0 2px #0ff, 0 0 10px #0ff;
+}
+
+#social-media .card-neon {
+  background-color: #111;
+  color: #0ff; /* Neon cyan */
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #0ff;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  text-align: center;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+#social-media .card-neon h2 {
+  text-shadow: 0 0 5px #0ff, 0 0 15px #0ff;
+  margin-bottom: 20px;
+}
+
+#social-media .social-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#social-media .social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #111;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 2px solid #0ff;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
+  color: #0ff;
+  text-decoration: none;
+}
+
+#social-media .social-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 5px #0ff);
+}
+
+#social-media .social-card span {
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0 0 5px #0ff;
+}
+
+#social-media .social-card:hover {
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+  color: #fff;
+}
+
+/* Different neon colors for each platform */
+.social-card.github { border-color: #fff; box-shadow: 0 0 10px #fff; }
+.social-card.linkedin { border-color: #0a66c2; box-shadow: 0 0 10px #0a66c2; }
+.social-card.instagram { border-color: #f77737; box-shadow: 0 0 10px #f77737; }
+.social-card.twitter { border-color: #1da1f2; box-shadow: 0 0 10px #1da1f2; }
+
+  </style>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      new Typed('#typo', {
+        strings: ['Experienced and results-driven Software Engineer with over 4 years in full stack development, currently working at Tech Mahindra. Skilled in Java, Spring Boot, Angular, and JavaScript, with strong database knowledge (PostgreSQL, MySQL, MongoDB). Ex-Trinitian, delivering GIS-based solutions using tools like Leaflet, GeoServer, and NCWMS Server. Proficient in deploying applications via Tomcat for seamless local access. Demonstrated strong interpersonal and problem-solving skills through past collaboration with high-profile clients, including DRDO scientists and defense officers in separate engagements. Passionate about solving complex challenges and contributing to dynamic, tech-driven teams'],
+        typeSpeed: 50,
+      });
+
+      // Get the button
+let backToTopBtn = document.getElementById("backToTop");
+
+// Show button only when user scrolls to bottom
+window.onscroll = function() { scrollFunction(); };
+
+function scrollFunction() {
+  // Distance from bottom
+  let scrollHeight = document.documentElement.scrollHeight;
+  let scrollTop = document.documentElement.scrollTop;
+  let clientHeight = document.documentElement.clientHeight;
+
+  if (scrollTop + clientHeight >= scrollHeight - 50) { // near bottom
+    backToTopBtn.style.display = "block";
+  } else {
+    backToTopBtn.style.display = "none";
+  }
+}
+
+// Scroll to top when button clicked
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+    });
+
+  </script>
+</head>
+
+<body>
+
+  <header>
+    <img src="images/Photo.jpg" alt="Profile Photo">
+    <h1>Govind Pal</h1>
+  </header>
+
+  <nav class="text-center">
+    <a href="#about">About</a>
+    <a href="#work">Work Experience</a>
+    <a href="#proj">Projects</a>
+    <a href="#edu">Education</a>
+    <a href="#skills">Skills</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- <section id="about">
+      <h2 class="text-center" style="color:#0ff; text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 20px #0ff;">About Me</h2>
+      <div class="row">
+        <div class="col-md-8 col-lg-8 mb-8">
+          <p id="typo"></p>
+        </div>
+      </div>
+    </section> -->
+<div id="personal" class="p-4 p-md-5 mb-4 rounded about-neon">
+  <div class="col-md-14 px-0">
+    <h1 class="display-4 fst-italic neon-text">Full Stack Developer</h1>
+    <p id="typo" class="lead my-3 typing-effect"></p>
+  </div>
+</div>
+
+<section id="work">
+  <h2 class="text-center" style="color:#0ff; text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 20px #0ff;">Work Experience</h2>
+  <div class="row">
+    <!-- Card 1 -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card-neon text-center">
+        <img src="https://mma.prnewswire.com/media/2804444/Tech_Mahindra_New_Logo.jpg?p=publish" alt="Company 1" class="img-fluid mb-3" style="height:120px; object-fit:contain;">
+        <h5>Senior Software Engineer</h5>
+        <p><strong>Tech Mahindra Limited</strong></p>
+        <p>October 2025 - Present</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card-neon text-center">
+        <img src="https://media.licdn.com/dms/image/v2/C510BAQGqAoF-oGlYiw/company-logo_200_200/company-logo_200_200/0/1631405864194?e=2147483647&v=beta&t=XqZ4cIKmvs5W-id5vXYiKHbupc0llWrhe2OC1iyjIrY" alt="Company 2" class="img-fluid mb-3" style="height:120px; object-fit:contain;">
+        <h5>Senior Software Engineer</h5>
+        <p><strong>Trinity Mobility</strong></p>
+        <p>August 2024 - August 2025</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card-neon text-center">
+        <img src="https://media.licdn.com/dms/image/v2/D560BAQGElfQT5tEs0g/company-logo_200_200/company-logo_200_200/0/1721367048204/microgenesis_techsoft_logo?e=2147483647&v=beta&t=Tvgb7ZiEITMCmcwykwAh2pfcxgHNvOVv4Vuzc1lKEcE" alt="Company 3" class="img-fluid mb-3" style="height:120px; object-fit:contain;">
+        <h5>Software Engineer</h5>
+        <p><strong>MicroGenesis Tech Soft Pvt. Ltd</strong></p>
+        <p>June 2022 - August 2024</p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card-neon text-center">
+        <img src="https://images.moneycontrol.com/static-mcnews/2019/10/DRDO.jpg" alt="Company 4" class="img-fluid mb-3" style="height:120px; object-fit:contain;">
+        <h5>Development Partner</h5>
+        <p><strong>DRDO (Ministry of Defence)</strong></p>
+        <p>April 2021 - June 2022</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proj">
+  <h2 class="text-center" style="color:#0ff; text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 20px #0ff;">Projects</h2>
+  <div class="row">
+    <!-- Card 1 -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card-neon text-center">
+        <h5>Live Video Chat Application</h5>
+        <p><strong>April 2021 - Confidential (Ministry of Defence)</strong></p>
+        <p>Chatting app allows real-time communication with users in web chat rooms.</p>
+        <a href="https://govindpal5101999.github.io/chat-application/" target="_blank" class="btn btn-neon">View Project</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card-neon text-center">
+        <h5>Store Application</h5>
+        <p><strong>August 2022 - Personal Project</strong></p>
+        <p>Application to maintain paid/unpaid amounts and other store functionalities.</p>
+        <a href="https://govindpal5101999.github.io/store-application/" target="_blank" class="btn btn-neon">View Project</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card-neon text-center">
+        <h5>Weather Application</h5>
+        <p><strong>June 2022 - MicroGenesis</strong></p>
+        <p>Provides real-time weather information, forecasts, and related data.</p>
+        <a href="https://govindpal5101999.github.io/weather-app/" target="_blank" class="btn btn-neon">View Project</a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card-neon text-center">
+        <h5>Shop Application</h5>
+        <p><strong>June 2023 - Personal Project</strong></p>
+        <p>Helps small retailers manage inventory, purchase, and sales efficiently.</p>
+        <a href="https://govindpal5101999.github.io/shop-application/" target="_blank" class="btn btn-neon">View Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="edu">
+  <h2 class="text-center" style="color:#0ff; text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 20px #0ff;">Education</h2>
+  <div class="row">
+    <!-- Card 1 -->
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card-neon text-center">
+        <img src="https://ai-i1.infcdn.net/icons_siandroid/png/200/14652/14652318.png" alt="10th" class="img-fluid mb-3" style="height:120px; object-fit:contain;">
+        <h5>10th Grade</h5>
+        <p><strong>Bright Paragon Academy, Bhopal</strong></p>
+        <p>Passing Year: 2014</p>
+        <p>Percentage: 79.6%</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card-neon text-center">
+        <img src="https://ai-i1.infcdn.net/icons_siandroid/png/200/14652/14652318.png" alt="12th" class="img-fluid mb-3" style="height:120px; object-fit:contain;">
+        <h5>12th Grade (PCM)</h5>
+        <p><strong>Bright Paragon Academy, Bhopal</strong></p>
+        <p>Passing Year: 2016</p>
+        <p>Percentage: 80%</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card-neon text-center">
+        <img src="https://www.nrigroupindia.com/wp-content/themes/twentynineteen/img/logo-dark.png" alt="B.E" class="img-fluid mb-3" style="height:120px; object-fit:contain;">
+        <h5>B.E Computer Science</h5>
+        <p><strong>NIIST, Bhopal</strong></p>
+        <p>Passing Year: 2020</p>
+        <p>Percentage: 79.4%</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="text-center" style="color:#0ff; text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 20px #0ff;">Skills</h2>
+  <div class="card-neon">
+    <ul>
+      <li><strong>Programming Languages:</strong> Java, JavaScript, TypeScript, Node.js, HTML, CSS, jQuery</li>
+      <li><strong>Frameworks & Libraries:</strong> Angular, React, Spring Boot</li>
+      <li><strong>Databases:</strong> MongoDB, MySQL, PostgreSQL</li>
+      <li><strong>GIS Technologies:</strong> Geoserver, Leaflet, Open Layers, NetCDF, Web Map Service, QGIS, Cesium</li>
+      <li><strong>Tools:</strong> Git (Version Control), Blender, Jira</li>
+      <li><strong>Soft Skills:</strong> Problem Solving, Troubleshooting, Communication, Agile</li>
+    </ul>
+  </div>
+</section>
+
+<section id="certi">
+  <h2 class="text-center" style="color:#0ff; text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 20px #0ff;">Certifications</h2>
+  <div class="card-neon">
+    <ul>
+      <li>
+        <strong>Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal - 2020:</strong> Technical Education Quality Improvement Programme (TEQIP-III)
+      </li>
+      <li>
+        <strong>Tatya Tope Stadium (TTS), Bhopal - 2016:</strong> Karate
+      </li>
+      <li>
+        <strong>Bhartiya Sanskriti Gyan Pariksha (BSGP), Haridwar - 2014:</strong> Sanskrit language best position
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="workshop">
+  <h2 class="text-center" style="color:#0ff; text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 20px #0ff;">Workshop / Internship</h2>
+  <div class="card-neon">
+    <div class="workshop-card">
+      <h4>NRI Institute of Information Science and Technology (NIIST), Bhopal - 2020</h4>
+      <p>Python with Ethical Hacking at NRI Institute of Information Science and Technology (NIIST), Bhopal.</p>
+    </div>
+    <div class="workshop-card">
+      <h4>Indyse, Bhopal - 2020</h4>
+      <p>Learnt HTML, CSS, JavaScript, Python, C, C++.</p>
+    </div>
+  </div>
+</section>
+
+<section id="social-media">
+  <h2 class="text-center" style="color:#0ff; text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 20px #0ff;">Connect with Me</h2>
+  <div class="row">
+    <div class="social-container">
+         <div class="col-md-6 col-lg-2 mb-4">
+           <a href="https://github.com/govindpal5101999" target="_blank" class="social-card github">
+             <img src="images/github.svg" alt="GitHub">
+             <span>GitHub</span>
+           </a>
+         </div>
+            <div class="col-md-6 col-lg-2 mb-4">
+
+              <a href="https://linkedin.com/in/govind-pal-817927215" target="_blank" class="social-card linkedin">
+                <img src="images/linkedin.svg" alt="LinkedIn">
+                <span>LinkedIn</span>
+              </a>
+            </div>
+               <div class="col-md-6 col-lg-2 mb-4">
+                 <a href="https://instagram.com/govindpal18nov" target="_blank" class="social-card instagram">
+                   <img src="images/instagram.svg" alt="Instagram">
+                   <span>Instagram</span>
+                 </a>
+
+               </div>
+      <!-- <a href="https://twitter.com/" target="_blank" class="social-card twitter">
+        <img src="images/twitter.svg" alt="Twitter">
+        <span>Twitter</span>
+      </a> -->
+    </div>
+  </div>
+</section>
+
+
+  </div>
+<button id="backToTop" title="Go to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+  <footer>
+    <p>Resume built for Govind by @Govind©2025. All Rights Reserved</p>
+  </footer>
+
+</body>
+
+</html>
